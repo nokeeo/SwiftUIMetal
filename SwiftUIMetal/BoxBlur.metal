@@ -12,13 +12,12 @@ half4 SampleLayer(float2 position, SwiftUI::Layer layer) {
                             SwiftUI::Layer layer,
                             float4 bounds,
                             float kRadius) {
-//  const int kRadius = 8;
   const int kPixelNumber = (kRadius * 2 + 1) * (kRadius * 2 + 1);
   half4 sum = half4(0, 0, 0, 1);
   for (int y = position.y - kRadius; y <= position.y + kRadius; y++) {
-//    if (y < 0 || y >= bounds.w) continue;
+    if (y < 0 || y >= bounds.w) continue;
     for (int x = position.x - kRadius; x <= position.x + kRadius; x++) {
-//      if (x < 0 || x >= bounds.z) continue;
+      if (x < 0 || x >= bounds.z) continue;
       sum += SampleLayer(float2(x, y), layer);
     }
   }
